@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: test new one-app-db
+  namespace: test new one
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: test new one-app-db
+    spec:
+      containers:
+        - name: mongo-container
+          imagePullPolicy: Always
+          image: mongo:3.2
+          ports:
+            - name: http-port
+              containerPort: 27017
+          volumeMounts:
+            - name: mongo
+              mountPath: /data/db
+      volumes:
+        - name: mongo
+          persistentVolumeClaim:
+            claimName: test new one-app-mongo-data

@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: test new one-system-entry
+  namespace: test new one
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: test new one-system-entry
+    spec:
+      containers:
+        - name: nginx-container
+          imagePullPolicy: IfNotPresent
+          image: tharanirajan/test new one-system-entry:1.0
+          ports:
+            - name: http-port
+              containerPort: 80

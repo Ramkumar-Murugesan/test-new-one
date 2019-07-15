@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: test new one-app
+  namespace: test new one
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: test new one-app
+    spec:
+      containers:
+        - name: node-container
+          imagePullPolicy: Always
+          image: tharanirajan/test new one-app:2.0
+          ports:
+            - name: http-port
+              containerPort: 3000
+          env:
+            - name: test new one-app-db
+              value: test new one-app-db
+            - name: VAULT_API
+              value: "http://vault.test new one.svc.cluster.local:8200"  
